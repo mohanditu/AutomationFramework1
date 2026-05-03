@@ -1,13 +1,12 @@
 package testCases;
 
-import java.util.Properties;
-
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
 import pageObjects.LoginpageObject;
+import pageObjects.MyAccountsPage;
 import testBase.BaseClass;
 
 @Listeners(UtilityFiles.ExtentReportManager.class)
@@ -28,6 +27,21 @@ public class TC002_Login extends BaseClass {
 		lop.setEmail(p.getProperty("username"));
 		lop.setPassword(p.getProperty("password"));
 		lop.btnLogin();		
+		
+		MyAccountsPage mp=new MyAccountsPage(driver);
+		
+		boolean status=mp.isMyAccountPageExists();
+		
+		if(status==true)
+		{
+			System.out.println("login successfull");
+			Assert.assertTrue(true);
+		}
+		else
+		{
+			Assert.assertTrue(false);
+		}
+		
 	}
 
 }

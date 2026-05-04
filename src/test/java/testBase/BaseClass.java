@@ -152,11 +152,14 @@ public class BaseClass {
 				+ "_" + timeStamp + ".png";
 		File targetFile = new File(targetFilePath);
 
-		// Ensure screenshots directory exists
-		targetFile.getParentFile().mkdirs();
-
-		// Use Files.copy for reliable file operations
-		Files.copy(sourceFile.toPath(), Paths.get(targetFilePath));
+		sourceFile.renameTo(targetFile);
+		
+		
+//		// Ensure screenshots directory exists
+//		targetFile.getParentFile().mkdirs();
+//
+//		// Use Files.copy for reliable file operations
+//		Files.copy(sourceFile.toPath(), Paths.get(targetFilePath));
 
 		return targetFilePath;
 

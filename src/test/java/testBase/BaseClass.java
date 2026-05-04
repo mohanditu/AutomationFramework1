@@ -44,16 +44,32 @@ public class BaseClass {
 
 		if (p.getProperty("execution_env").equalsIgnoreCase("remote")) {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-			if (os.equals("windows")) {
+
+			switch (os.toLowerCase()) {
+			case "windows":
 				capabilities.setPlatform(Platform.WIN10);
-			} else if (os.equals("mac")) {
-				capabilities.setPlatform(Platform.MAC);
-			} else if (os.equals("linux")) {
+				break;
+			case "linux":
 				capabilities.setPlatform(Platform.LINUX);
-			} else {
-				System.out.println("no amtching platform found");
+				break;
+			case "mac":
+				capabilities.setPlatform(Platform.MAC);
+				break;
+			default:
+				System.out.println("invalid platform");
 				return;
 			}
+
+//			if (os.equals("windows")) {
+//				capabilities.setPlatform(Platform.WIN10);
+//			} else if (os.equals("mac")) {
+//				capabilities.setPlatform(Platform.MAC);
+//			} else if (os.equals("linux")) {
+//				capabilities.setPlatform(Platform.LINUX);
+//			} else {
+//				System.out.println("no amtching platform found");
+//				return;
+//			}
 
 			// browser
 
